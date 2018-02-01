@@ -3,10 +3,11 @@ from __future__ import unicode_literals
 from bs4 import *
 import urllib.request
 import os
+import youtube_dl
 #code starts here
 #downloader
 def down(sname):
-	ydl_opts = {'format': 'bestaudio/best','postprocessors': [{'key': 'FFmpegExtractAudio','preferredcodec': 'mp3','preferredquality': '192',}],}
+	ydl_opts = {'format': 'bestaudio/best','postprocessors': [{'key': 'FFmpegExtractAudio','preferredcodec': 'mp3','preferredquality': '320',}],}
 	with youtube_dl.YoutubeDL(ydl_opts) as ydl:	ydl.download([sname])
 
 # main func
@@ -19,7 +20,7 @@ def main():
 	l=[]
 	for vid in soup.findAll(attrs={'class':'yt-uix-tile-link'}):
 		l.append('https://www.youtube.com' + vid['href'])
-	down(l[1])
+	down(l[1])																	#downloading most appropriate song
 	#if (not os.path.exists('abc')):
 	#	os.system("mkdir abc")
 	#os.system("mv *.mp3 abc")
