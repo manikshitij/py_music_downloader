@@ -4,6 +4,8 @@ from bs4 import *
 import urllib.request
 import os
 import youtube_dl
+from os.path import expanduser
+
 #code starts here
 #downloader
 def down(sname):
@@ -21,8 +23,12 @@ def main():
 	for vid in soup.findAll(attrs={'class':'yt-uix-tile-link'}):
 		l.append('https://www.youtube.com' + vid['href'])
 	down(l[1])																	#downloading most appropriate song
-	#if (not os.path.exists('abc')):
-	#	os.system("mkdir abc")
-	#os.system("mv *.mp3 abc")
+	home = expanduser("~")
+	#if (not os.path.exists(home + "/Downloads/Music")):
+	#	dir =  home + "/Downloads/Music"
+	#	os.system(("mkdir %s",%dir))
+	#os.system("mv *.mp3 home + "/Downloads/Music")
+
+	  
 if __name__ == '__main__':
 	main()
